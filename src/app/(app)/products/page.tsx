@@ -1,8 +1,10 @@
 import { PageHeader } from "@/components/ui/page-header";
 import { ProductsClient } from "@/components/products/products-client";
 import { getCategories, getLocations, getProducts } from "@/lib/data";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export default async function ProductsPage() {
+  if (!isSupabaseConfigured) return null;
   const [products, categories, locations] = await Promise.all([
     getProducts(),
     getCategories(),
