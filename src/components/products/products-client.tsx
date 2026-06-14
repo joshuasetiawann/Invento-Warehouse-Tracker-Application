@@ -52,7 +52,8 @@ export function ProductsClient({
       const matchSearch =
         !q ||
         p.name.toLowerCase().includes(q) ||
-        p.sku.toLowerCase().includes(q);
+        p.sku.toLowerCase().includes(q) ||
+        (p.barcode?.toLowerCase().includes(q) ?? false);
       const matchCat = !categoryId || p.category_id === categoryId;
       return matchSearch && matchCat;
     });
@@ -90,7 +91,7 @@ export function ProductsClient({
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Cari nama atau SKU…"
+            placeholder="Cari nama, SKU, atau barcode…"
             className="pl-9"
           />
         </div>
@@ -155,7 +156,10 @@ export function ProductsClient({
                         </span>
                         <div>
                           <p className="font-medium text-foreground">{p.name}</p>
-                          <p className="text-xs text-muted-foreground">{p.sku}</p>
+                          <p className="font-mono text-xs text-muted-foreground tabular">
+                            {p.sku}
+                            {p.barcode ? ` · ${p.barcode}` : ""}
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -172,11 +176,11 @@ export function ProductsClient({
                         "—"
                       )}
                     </td>
-                    <td className="px-5 py-3.5 text-right font-medium text-foreground">
+                    <td className="px-5 py-3.5 text-right font-mono font-medium text-foreground tabular">
                       {formatCurrency(Number(p.price))}
                     </td>
                     <td className="px-5 py-3.5 text-right font-semibold text-foreground">
-                      {p.quantity}{" "}
+                      <span className="font-mono tabular">{p.quantity}</span>{" "}
                       <span className="text-xs font-normal text-muted-foreground">
                         {p.unit}
                       </span>
