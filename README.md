@@ -18,9 +18,9 @@ UI mengikuti design system **Invento "Tidal"** dari Google Stitch: latar Canvas 
 ![Stok Masuk & Keluar](docs/screenshots/05-movements.png)
 
 ### Scan Barcode (Barang Masuk / Keluar)
-> Pilih produk dengan **scan barcode** — kamera, scanner gun, atau ketik manual. Kode dicocokkan ke produk lalu terpilih otomatis.
+> Pilih produk dengan **scan barcode** — kamera, scanner gun, atau ketik manual. Kode dibaca lalu dicocokkan ke produk dan terpilih otomatis. Screenshot di bawah menunjukkan kamera benar-benar membaca barcode (diuji headless dengan kamera-palsu).
 
-![Scan Barcode](docs/screenshots/10-scan-selected.png)
+![Scan Barcode — kamera membaca barcode](docs/screenshots/11-camera-decoded.png)
 
 <table>
   <tr>
