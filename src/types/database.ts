@@ -38,6 +38,7 @@ export interface Product {
   user_id: string;
   name: string;
   sku: string;
+  barcode: string | null;
   description: string | null;
   category_id: string | null;
   location_id: string | null;

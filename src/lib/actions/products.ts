@@ -21,6 +21,7 @@ function parseProduct(formData: FormData) {
   return {
     name: String(formData.get("name") ?? "").trim(),
     sku: String(formData.get("sku") ?? "").trim(),
+    barcode: str("barcode"),
     description: str("description"),
     category_id: str("category_id"),
     location_id: str("location_id"),
@@ -43,7 +44,13 @@ export async function createProduct(formData: FormData): Promise<ActionResult> {
   const { error } = await supabase.from("products").insert(payload);
 
   if (error) {
-    if (error.code === "23505") return { error: "SKU sudah dipakai produk lain." };
+    if (error.code === "23505") {
+      return {
+        error: /barcode/i.test(error.message)
+          ? "Barcode sudah dipakai produk lain."
+          : "SKU sudah dipakai produk lain.",
+      };
+    }
     return { error: error.message };
   }
 
@@ -68,7 +75,13 @@ export async function updateProduct(
     .eq("id", id);
 
   if (error) {
-    if (error.code === "23505") return { error: "SKU sudah dipakai produk lain." };
+    if (error.code === "23505") {
+      return {
+        error: /barcode/i.test(error.message)
+          ? "Barcode sudah dipakai produk lain."
+          : "SKU sudah dipakai produk lain.",
+      };
+    }
     return { error: error.message };
   }
 
