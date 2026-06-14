@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { LucideIcon } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, type LucideIcon } from "lucide-react";
 
 type Tone = "primary" | "success" | "warning" | "danger";
 
@@ -16,32 +16,53 @@ export function StatCard({
   hint,
   icon: Icon,
   tone = "primary",
+  delta,
+  deltaUp = true,
 }: {
   label: string;
   value: string;
   hint?: string;
   icon: LucideIcon;
   tone?: Tone;
+  delta?: string;
+  deltaUp?: boolean;
 }) {
   return (
-    <div className="rounded-[var(--radius)] border border-border bg-card p-5 shadow-sm shadow-slate-200/40">
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-sm font-medium text-muted-foreground">{label}</p>
-          <p className="mt-2 text-2xl font-bold tracking-tight text-foreground">
-            {value}
-          </p>
-        </div>
+    <div className="rounded-[var(--radius)] border border-border bg-card p-5 shadow-card">
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          {label}
+        </p>
         <span
           className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-xl",
+            "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg",
             toneMap[tone],
           )}
         >
-          <Icon className="h-5 w-5" />
+          <Icon className="h-[1.05rem] w-[1.05rem]" />
         </span>
       </div>
-      {hint && <p className="mt-3 text-xs text-muted-foreground">{hint}</p>}
+      <p className="mt-3 font-mono text-[1.75rem] font-bold leading-none tracking-tight text-foreground tabular">
+        {value}
+      </p>
+      <div className="mt-2 flex items-center gap-1.5">
+        {delta && (
+          <span
+            className={cn(
+              "inline-flex items-center gap-0.5 font-mono text-xs font-semibold",
+              deltaUp ? "text-success" : "text-danger",
+            )}
+          >
+            {deltaUp ? (
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            ) : (
+              <ArrowDownRight className="h-3.5 w-3.5" />
+            )}
+            {delta}
+          </span>
+        )}
+        {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      </div>
     </div>
   );
 }

@@ -92,7 +92,7 @@ export default async function DashboardPage() {
                   <Boxes className="h-6 w-6" />
                 </div>
                 <p className="text-sm font-medium text-foreground">
-                  Semua stok aman 🎉
+                  Semua stok aman
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Tidak ada produk yang menipis atau habis.
@@ -119,7 +119,7 @@ export default async function DashboardPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm font-semibold text-foreground">
+                      <span className="font-mono text-sm font-semibold text-foreground tabular">
                         {p.quantity} {p.unit}
                       </span>
                       <StockBadge status={getStockStatus(p)} />
