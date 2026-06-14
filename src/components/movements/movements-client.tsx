@@ -12,11 +12,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/empty-state";
 import { MovementForm } from "./movement-form";
-import type {
-  MovementType,
-  MovementWithProduct,
-  Product,
-} from "@/types/database";
+import type { MovementType, MovementWithProduct } from "@/types/database";
+import type { ScannableProduct } from "@/lib/match";
 import { formatDateTime } from "@/lib/utils";
 
 const meta: Record<
@@ -38,7 +35,7 @@ export function MovementsClient({
   products,
 }: {
   movements: MovementWithProduct[];
-  products: Pick<Product, "id" | "name" | "sku" | "unit" | "quantity">[];
+  products: ScannableProduct[];
 }) {
   const [formType, setFormType] = React.useState<MovementType | null>(null);
   const noProducts = products.length === 0;
