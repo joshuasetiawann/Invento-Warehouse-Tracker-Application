@@ -2,8 +2,10 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SettingsForm } from "@/components/settings/settings-form";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export default async function SettingsPage() {
+  if (!isSupabaseConfigured) return null;
   const supabase = await createClient();
   const {
     data: { user },

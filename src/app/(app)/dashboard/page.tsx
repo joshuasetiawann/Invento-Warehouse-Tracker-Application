@@ -16,6 +16,7 @@ import { Badge, StockBadge } from "@/components/ui/badge";
 import { getDashboardStats } from "@/lib/data";
 import { getStockStatus, type MovementType } from "@/types/database";
 import { formatCurrency, formatDateTime, formatNumber } from "@/lib/utils";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 const movementMeta: Record<
   MovementType,
@@ -31,6 +32,7 @@ const movementMeta: Record<
 };
 
 export default async function DashboardPage() {
+  if (!isSupabaseConfigured) return null;
   const { stats, lowStock, recentMovements } = await getDashboardStats();
 
   return (

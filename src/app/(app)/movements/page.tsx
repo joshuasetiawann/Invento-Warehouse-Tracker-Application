@@ -1,8 +1,10 @@
 import { PageHeader } from "@/components/ui/page-header";
 import { MovementsClient } from "@/components/movements/movements-client";
 import { getMovements, getProducts } from "@/lib/data";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export default async function MovementsPage() {
+  if (!isSupabaseConfigured) return null;
   const [movements, products] = await Promise.all([
     getMovements(100),
     getProducts(),
