@@ -15,16 +15,18 @@ export default function RegisterPage() {
   if (!isSupabaseConfigured) return <SetupNotice />;
 
   return (
-    <div className="animate-[fade-in_0.4s_ease]">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-foreground">Buat akun baru</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
+    <div className="animate-[fade-in_0.4s_ease] rounded-[var(--radius)] border border-border bg-card p-8 shadow-card">
+      <div className="mb-7">
+        <h2 className="text-[1.75rem] font-bold tracking-tight text-foreground">
+          Buat akun baru
+        </h2>
+        <p className="mt-1.5 text-sm text-muted-foreground">
           Mulai kelola inventori gudang Anda dalam hitungan menit.
         </p>
       </div>
 
       {state?.error && (
-        <div className="mb-5 flex items-center gap-2 rounded-lg bg-danger-soft px-3.5 py-2.5 text-sm text-danger">
+        <div className="mb-5 flex items-center gap-2 rounded-[var(--radius-control)] bg-danger-soft px-3.5 py-2.5 text-sm text-danger">
           <AlertCircle className="h-4 w-4 shrink-0" />
           {state.error}
         </div>
