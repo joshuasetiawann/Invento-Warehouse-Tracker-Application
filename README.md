@@ -2,6 +2,30 @@
 
 Aplikasi pelacak gudang (inventory management) berbasis **Next.js 16 (App Router)** + **Supabase**. Kelola produk, catat barang masuk & keluar, pantau stok menipis, dan lihat ringkasan di dashboard — dengan UI modern dan skeleton loader di setiap halaman.
 
+## 🖼️ Preview
+
+> Screenshot di bawah diambil dari aplikasi yang **benar-benar berjalan** secara lokal (Next.js + Supabase lokal, dengan data demo).
+
+### Dashboard
+![Dashboard](docs/screenshots/02-dashboard.png)
+
+### Produk
+![Produk](docs/screenshots/03-products.png)
+
+### Stok Masuk & Keluar
+![Stok Masuk & Keluar](docs/screenshots/05-movements.png)
+
+<table>
+  <tr>
+    <td width="50%"><b>Login</b><br/><img src="docs/screenshots/01-login.png" alt="Login" /></td>
+    <td width="50%"><b>Tambah Produk</b><br/><img src="docs/screenshots/04-product-form.png" alt="Form Produk" /></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Kategori</b><br/><img src="docs/screenshots/06-categories.png" alt="Kategori" /></td>
+    <td width="50%"><b>Lokasi</b><br/><img src="docs/screenshots/07-locations.png" alt="Lokasi" /></td>
+  </tr>
+</table>
+
 ## ✨ Fitur
 
 - 🔐 **Autentikasi** — daftar / masuk dengan email & password (Supabase Auth)
@@ -43,6 +67,15 @@ npm run dev
 Buka [http://localhost:3000](http://localhost:3000), daftar akun, dan mulai kelola gudang Anda.
 
 > 💡 Jika `.env.local` belum diisi, aplikasi akan menampilkan panduan setup alih-alih crash.
+
+### 5. (Opsional) Isi data demo
+Untuk mengisi produk, kategori, lokasi, dan riwayat stok contoh sekaligus membuat user demo:
+
+```bash
+SUPABASE_URL=<url> SERVICE_ROLE_KEY=<service_role_key> node scripts/seed.mjs
+```
+
+Login demo: **demo@invento.app** / **demo123456**.
 
 ## 🧱 Tech Stack
 

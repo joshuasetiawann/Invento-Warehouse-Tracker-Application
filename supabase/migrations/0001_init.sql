@@ -234,3 +234,20 @@ drop trigger if exists on_stock_movement on public.stock_movements;
 create trigger on_stock_movement
   after insert on public.stock_movements
   for each row execute function public.apply_stock_movement();
+
+-- ---------------------------------------------------------------------------
+-- Table privileges
+-- The app authenticates every request (no anonymous access), so grant the
+-- `authenticated` role table access. Row visibility is still governed by the
+-- RLS policies above. `service_role` is granted for trusted server-side tasks
+-- (e.g. seeding). `anon` is intentionally NOT granted.
+-- ---------------------------------------------------------------------------
+grant usage on schema public to authenticated, service_role;
+
+grant select, insert, update, delete on
+  public.profiles,
+  public.categories,
+  public.locations,
+  public.products,
+  public.stock_movements
+to authenticated, service_role;
