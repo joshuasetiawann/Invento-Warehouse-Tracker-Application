@@ -2,6 +2,8 @@
 
 Aplikasi pelacak gudang (inventory management) berbasis **Next.js 16 (App Router)** + **Supabase**. Kelola produk, catat barang masuk & keluar, pantau stok menipis, dan lihat ringkasan di dashboard — dengan UI modern dan skeleton loader di setiap halaman.
 
+UI mengikuti design system **Invento "Tidal"** dari Google Stitch: latar Canvas Mist, satu aksen **Tidal Blue (#3B6FB0)**, tipografi **Geist** + **Geist Mono** (untuk seluruh angka/kode/qty), sidebar terang, border 1px halus, dan badge status bertint.
+
 ## 🖼️ Preview
 
 > Screenshot di bawah diambil dari aplikasi yang **benar-benar berjalan** secara lokal (Next.js + Supabase lokal, dengan data demo).
