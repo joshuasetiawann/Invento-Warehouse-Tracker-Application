@@ -1,42 +1,58 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces */
-  --color-background: #f6f7fb;
-  --color-foreground: #0f172a;
-  --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #64748b;
-  --color-border: #e6e8ef;
-  --color-input: #e6e8ef;
-  --color-ring: #6366f1;
+  /* ── Surfaces (Invento "Tidal" system) ───────────────────────────── */
+  --color-background: #f7f8fa; /* Canvas Mist — app background */
+  --color-foreground: #18181b; /* Charcoal Ink — never pure black */
+  --color-card: #ffffff; /* Pure Surface */
+  --color-card-foreground: #18181b;
+  --color-muted: #f3f4f6; /* light gray — table header / secondary zones */
+  --color-muted-foreground: #6b7280; /* Muted Steel — metadata, headers */
+  --color-border: rgba(228, 231, 236, 0.9); /* Whisper Border */
+  --color-input: #d8dce3; /* slightly stronger so fields read */
+  --color-ring: #3b6fb0; /* Tidal Blue focus ring */
 
-  /* Brand */
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
+  /* ── Brand — single accent: Tidal Blue ───────────────────────────── */
+  --color-primary: #3b6fb0;
+  --color-primary-hover: #325f97;
   --color-primary-foreground: #ffffff;
-  --color-primary-soft: #eef0ff;
+  --color-primary-soft: #eaf1f8; /* Tidal Blue Wash */
+  --color-brand-deep: #1c5696; /* deeper tidal for gradients */
 
-  /* Sidebar */
-  --color-sidebar: #0e1424;
-  --color-sidebar-foreground: #cbd5e1;
-  --color-sidebar-muted: #8b97ad;
-  --color-sidebar-active: #4f46e5;
+  /* ── Sidebar (LIGHT, not navy) ───────────────────────────────────── */
+  --color-sidebar: #ffffff;
+  --color-sidebar-foreground: #424750;
+  --color-sidebar-muted: #6b7280;
+  --color-sidebar-active: #3b6fb0;
+  --color-sidebar-active-bg: #eaf1f8;
 
-  /* Status */
-  --color-success: #16a34a;
-  --color-success-soft: #dcfce7;
-  --color-warning: #d97706;
-  --color-warning-soft: #fef3c7;
-  --color-danger: #dc2626;
-  --color-danger-soft: #fee2e2;
-  --color-info: #0284c7;
-  --color-info-soft: #e0f2fe;
+  /* ── Status (badge-only; tint bg + colored text) ─────────────────── */
+  --color-success: #047857; /* Aktif / Tersedia */
+  --color-success-soft: #ecfdf5;
+  --color-warning: #b45309; /* Sebagian / Penuh */
+  --color-warning-soft: #fffbeb;
+  --color-danger: #be123c; /* Batal / Void / destructive */
+  --color-danger-soft: #fff1f2;
+  --color-info: #3b6fb0; /* Dipindahkan-info uses brand */
+  --color-info-soft: #eaf1f8;
+  --color-neutral-status: #6b7280; /* Kosong */
+  --color-neutral-status-soft: #f3f4f6;
+  --color-withdrawn: #475569; /* Terambil */
+  --color-withdrawn-soft: #f1f5f9;
 
-  --radius: 0.85rem;
+  /* ── Shape — rounded 8/12px (NOT sharp) ──────────────────────────── */
+  --radius: 0.75rem; /* 12px — cards */
+  --radius-control: 0.5rem; /* 8px — buttons, inputs, badges */
+
+  /* ── Type ────────────────────────────────────────────────────────── */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ── Elevation — very soft, canvas-tinted (no heavy shadows) ─────── */
+  --shadow-card: 0 1px 2px 0 rgba(24, 24, 27, 0.04),
+    0 1px 3px 0 rgba(24, 24, 27, 0.03);
+  --shadow-pop: 0 4px 16px -2px rgba(24, 24, 27, 0.1),
+    0 2px 6px -2px rgba(24, 24, 27, 0.06);
 
   --animate-shimmer: shimmer 1.6s ease-in-out infinite;
   --animate-fade-in: fade-in 0.35s ease both;
@@ -54,7 +70,7 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -73,17 +89,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Tabular, mono figures for all numeric / code data (box codes, qty, IDs, dates) */
+.font-mono,
+.tabular {
+  font-feature-settings: "tnum" 1;
+}
+
 /* Skeleton shimmer block */
 .skeleton {
   position: relative;
   overflow: hidden;
   background-color: var(--color-muted);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-control);
   background-image: linear-gradient(
     90deg,
-    rgba(226, 232, 240, 0) 0%,
-    rgba(255, 255, 255, 0.65) 50%,
-    rgba(226, 232, 240, 0) 100%
+    rgba(228, 231, 236, 0) 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(228, 231, 236, 0) 100%
   );
   background-size: 200% 100%;
   animation: var(--animate-shimmer);
@@ -95,7 +117,7 @@ body {
   height: 8px;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #cbd0d8;
   border-radius: 9999px;
 }
 .scrollbar-thin::-webkit-scrollbar-track {
