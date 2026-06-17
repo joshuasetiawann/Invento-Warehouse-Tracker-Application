@@ -1,15 +1,23 @@
 import { cn } from "@/lib/utils";
 import type { StockStatus } from "@/types/database";
 
-type Tone = "success" | "warning" | "danger" | "info" | "neutral" | "primary";
+type Tone =
+  | "success"
+  | "warning"
+  | "danger"
+  | "info"
+  | "neutral"
+  | "primary"
+  | "withdrawn";
 
 const tones: Record<Tone, string> = {
   success: "bg-success-soft text-success",
   warning: "bg-warning-soft text-warning",
   danger: "bg-danger-soft text-danger",
   info: "bg-info-soft text-info",
-  neutral: "bg-muted text-muted-foreground",
+  neutral: "bg-neutral-status-soft text-neutral-status",
   primary: "bg-primary-soft text-primary",
+  withdrawn: "bg-withdrawn-soft text-withdrawn",
 };
 
 export function Badge({
@@ -24,7 +32,8 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium",
+        // pill, 12px semibold, no icon inside (per design system)
+        "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
         tones[tone],
         className,
       )}
@@ -42,10 +51,5 @@ const stockMeta: Record<StockStatus, { tone: Tone; label: string }> = {
 
 export function StockBadge({ status }: { status: StockStatus }) {
   const meta = stockMeta[status];
-  return (
-    <Badge tone={meta.tone}>
-      <span className="h-1.5 w-1.5 rounded-full bg-current" />
-      {meta.label}
-    </Badge>
-  );
+  return <Badge tone={meta.tone}>{meta.label}</Badge>;
 }
