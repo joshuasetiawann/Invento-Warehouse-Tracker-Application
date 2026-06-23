@@ -3,7 +3,7 @@
 import { Suspense, useActionState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, ArrowRight } from "lucide-react";
 import { login } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/field";
@@ -16,16 +16,18 @@ function LoginForm() {
   const [state, formAction, pending] = useActionState(login, undefined);
 
   return (
-    <div className="animate-[fade-in_0.4s_ease]">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-foreground">Selamat datang 👋</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Masuk untuk mengelola gudang Anda.
+    <div className="animate-[fade-in_0.4s_ease] rounded-[var(--radius)] border border-border bg-card p-8 shadow-card">
+      <div className="mb-7">
+        <h2 className="text-[1.75rem] font-bold tracking-tight text-foreground">
+          Masuk
+        </h2>
+        <p className="mt-1.5 text-sm text-muted-foreground">
+          Silakan masukkan kredensial akun Anda.
         </p>
       </div>
 
       {state?.error && (
-        <div className="mb-5 flex items-center gap-2 rounded-lg bg-danger-soft px-3.5 py-2.5 text-sm text-danger">
+        <div className="mb-5 flex items-center gap-2 rounded-[var(--radius-control)] bg-danger-soft px-3.5 py-2.5 text-sm text-danger">
           <AlertCircle className="h-4 w-4 shrink-0" />
           {state.error}
         </div>
@@ -40,12 +42,12 @@ function LoginForm() {
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="nama@perusahaan.com"
+            placeholder="admin@invento.id"
             required
           />
         </div>
         <div>
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Kata Sandi</Label>
           <Input
             id="password"
             name="password"
@@ -57,12 +59,16 @@ function LoginForm() {
         </div>
         <Button type="submit" size="lg" loading={pending} className="w-full">
           Masuk
+          {!pending && <ArrowRight className="h-4 w-4" />}
         </Button>
       </form>
 
       <p className="mt-6 text-center text-sm text-muted-foreground">
         Belum punya akun?{" "}
-        <Link href="/register" className="font-semibold text-primary hover:underline">
+        <Link
+          href="/register"
+          className="font-semibold text-primary hover:underline"
+        >
           Daftar sekarang
         </Link>
       </p>

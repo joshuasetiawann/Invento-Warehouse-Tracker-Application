@@ -17,14 +17,19 @@ export function AppShell({
 
   return (
     <div className="min-h-screen">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        name={name}
+        email={email}
+      />
       <div className="lg:pl-72">
         <Topbar
           onMenu={() => setSidebarOpen(true)}
           name={name}
           email={email}
         />
-        <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8">
           {children}
         </main>
       </div>

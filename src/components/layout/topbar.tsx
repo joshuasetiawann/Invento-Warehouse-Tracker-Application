@@ -68,7 +68,7 @@ export function Topbar({
           </button>
 
           {menuOpen && (
-            <div className="absolute right-0 mt-2 w-56 overflow-hidden rounded-xl border border-border bg-card shadow-lg animate-[fade-in_0.15s_ease]">
+            <div className="absolute right-0 mt-2 w-56 overflow-hidden rounded-[var(--radius)] border border-border bg-card shadow-pop animate-[fade-in_0.15s_ease]">
               <div className="border-b border-border px-4 py-3">
                 <p className="text-sm font-medium text-foreground">{display}</p>
                 <p className="truncate text-xs text-muted-foreground">{email}</p>
