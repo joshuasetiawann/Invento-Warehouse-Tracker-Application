@@ -79,14 +79,14 @@ async function main() {
 
   // Products (quantity starts at 0 — built up via movements below)
   const products = [
-    { name: "Laptop Asus Vivobook", sku: "ELC-001", unit: "unit", price: 8500000, cost: 7600000, min_stock: 5, category: "Elektronik", location: "Gudang Utama", in: 15, out: 3 },
-    { name: "Mouse Wireless Logitech", sku: "ELC-002", unit: "pcs", price: 150000, cost: 110000, min_stock: 10, category: "Elektronik", location: "Rak B", in: 10, out: 7 },
-    { name: "Kertas A4 80gsm", sku: "ATK-001", unit: "rim", price: 55000, cost: 45000, min_stock: 20, category: "Alat Tulis", location: "Gudang Utama", in: 50, out: 50 },
-    { name: "Pulpen Standard Hitam", sku: "ATK-002", unit: "pcs", price: 3000, cost: 1800, min_stock: 50, category: "Alat Tulis", location: "Rak B", in: 250, out: 10 },
-    { name: "Air Mineral 600ml", sku: "PGN-001", unit: "botol", price: 3500, cost: 2200, min_stock: 100, category: "Pangan", location: "Cold Storage", in: 120, out: 35 },
-    { name: "Kopi Sachet 25g", sku: "PGN-002", unit: "sachet", price: 1500, cost: 900, min_stock: 50, category: "Pangan", location: "Gudang Utama", in: 600, out: 0 },
-    { name: "Obeng Set 6 in 1", sku: "PRK-001", unit: "set", price: 85000, cost: 60000, min_stock: 8, category: "Perkakas", location: "Rak B", in: 20, out: 5 },
-    { name: "Lakban Coklat 2 inch", sku: "PRK-002", unit: "roll", price: 12000, cost: 8000, min_stock: 30, category: "Perkakas", location: "Gudang Utama", in: 30, out: 8 },
+    { name: "Laptop Asus Vivobook", sku: "ELC-001", barcode: "8991234500017", unit: "unit", price: 8500000, cost: 7600000, min_stock: 5, category: "Elektronik", location: "Gudang Utama", in: 15, out: 3 },
+    { name: "Mouse Wireless Logitech", sku: "ELC-002", barcode: "8991234500024", unit: "pcs", price: 150000, cost: 110000, min_stock: 10, category: "Elektronik", location: "Rak B", in: 10, out: 7 },
+    { name: "Kertas A4 80gsm", sku: "ATK-001", barcode: "8991234500031", unit: "rim", price: 55000, cost: 45000, min_stock: 20, category: "Alat Tulis", location: "Gudang Utama", in: 50, out: 50 },
+    { name: "Pulpen Standard Hitam", sku: "ATK-002", barcode: "8991234500048", unit: "pcs", price: 3000, cost: 1800, min_stock: 50, category: "Alat Tulis", location: "Rak B", in: 250, out: 10 },
+    { name: "Air Mineral 600ml", sku: "PGN-001", barcode: "8991234500055", unit: "botol", price: 3500, cost: 2200, min_stock: 100, category: "Pangan", location: "Cold Storage", in: 120, out: 35 },
+    { name: "Kopi Sachet 25g", sku: "PGN-002", barcode: "8991234500062", unit: "sachet", price: 1500, cost: 900, min_stock: 50, category: "Pangan", location: "Gudang Utama", in: 600, out: 0 },
+    { name: "Obeng Set 6 in 1", sku: "PRK-001", barcode: "8991234500079", unit: "set", price: 85000, cost: 60000, min_stock: 8, category: "Perkakas", location: "Rak B", in: 20, out: 5 },
+    { name: "Lakban Coklat 2 inch", sku: "PRK-002", barcode: "8991234500086", unit: "roll", price: 12000, cost: 8000, min_stock: 30, category: "Perkakas", location: "Gudang Utama", in: 30, out: 8 },
   ];
 
   for (const p of products) {
@@ -96,6 +96,7 @@ async function main() {
         user_id: userId,
         name: p.name,
         sku: p.sku,
+        barcode: p.barcode,
         unit: p.unit,
         price: p.price,
         cost: p.cost,
