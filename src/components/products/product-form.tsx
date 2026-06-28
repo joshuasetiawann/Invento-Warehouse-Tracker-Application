@@ -86,7 +86,23 @@ export function ProductForm({
               name="sku"
               defaultValue={product?.sku}
               placeholder="SKU-0001"
+              className="font-mono"
               required
+            />
+          </FormRow>
+
+          <FormRow
+            label="Barcode (opsional)"
+            htmlFor="barcode"
+            hint="Kode yang di-scan saat barang masuk/keluar. Mis. EAN-13."
+          >
+            <Input
+              id="barcode"
+              name="barcode"
+              defaultValue={product?.barcode ?? ""}
+              placeholder="8991234500017"
+              inputMode="numeric"
+              className="font-mono"
             />
           </FormRow>
 
