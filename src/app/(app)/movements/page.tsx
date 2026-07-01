@@ -14,6 +14,7 @@ export default async function MovementsPage() {
     id: p.id,
     name: p.name,
     sku: p.sku,
+    barcode: p.barcode,
     unit: p.unit,
     quantity: p.quantity,
   }));
