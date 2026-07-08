@@ -17,6 +17,11 @@ UI mengikuti design system **Invento "Tidal"** dari Google Stitch: latar Canvas 
 ### Stok Masuk & Keluar
 ![Stok Masuk & Keluar](docs/screenshots/05-movements.png)
 
+### Scan Barcode (Barang Masuk / Keluar)
+> Pilih produk dengan **scan barcode** — kamera, scanner gun, atau ketik manual. Kode dicocokkan ke produk lalu terpilih otomatis.
+
+![Scan Barcode](docs/screenshots/10-scan-selected.png)
+
 <table>
   <tr>
     <td width="50%"><b>Login</b><br/><img src="docs/screenshots/01-login.png" alt="Login" /></td>
@@ -33,6 +38,7 @@ UI mengikuti design system **Invento "Tidal"** dari Google Stitch: latar Canvas 
 - 🔐 **Autentikasi** — daftar / masuk dengan email & password (Supabase Auth)
 - 📦 **Manajemen Produk** — CRUD produk lengkap (SKU, harga, satuan, stok minimum) + pencarian & filter kategori
 - 🔄 **Stok Masuk & Keluar** — catat pergerakan stok; stok produk terupdate otomatis (lewat trigger DB) dengan riwayat transaksi
+- 📷 **Scan Barcode** — pilih produk saat barang masuk/keluar lewat scan barcode: kamera (HP/webcam), scanner gun (USB/Bluetooth), atau ketik manual. Dicocokkan ke kolom `barcode` produk (fallback ke SKU)
 - 🏷️ **Kategori & Lokasi** — kelompokkan produk dan lacak posisi penyimpanannya
 - 📊 **Dashboard** — total produk, total unit, nilai inventori, dan low-stock alert
 - 💀 **Skeleton Loaders** — loading state di setiap rute (`loading.tsx`)
@@ -44,13 +50,14 @@ UI mengikuti design system **Invento "Tidal"** dari Google Stitch: latar Canvas 
 Buat project gratis di [supabase.com/dashboard](https://supabase.com/dashboard).
 
 ### 2. Jalankan skema database
-Buka **SQL Editor** di dashboard Supabase, lalu jalankan isi file:
+Buka **SQL Editor** di dashboard Supabase, lalu jalankan isi file migrasi secara berurutan:
 
 ```
 supabase/migrations/0001_init.sql
+supabase/migrations/0002_products_barcode.sql
 ```
 
-Ini membuat tabel `profiles`, `categories`, `locations`, `products`, `stock_movements`, beserta RLS, trigger auto-update stok, dan auto-create profil saat signup.
+`0001` membuat tabel `profiles`, `categories`, `locations`, `products`, `stock_movements`, beserta RLS, trigger auto-update stok, dan auto-create profil saat signup. `0002` menambahkan kolom `barcode` pada produk untuk fitur scan.
 
 ### 3. Konfigurasi environment
 Salin `.env.example` menjadi `.env.local` dan isi dari **Project Settings → API**:
