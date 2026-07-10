@@ -46,7 +46,9 @@ UI mengikuti design system **Invento "Tidal"** dari Google Stitch: latar Canvas 
 
 ## 🚀 Setup
 
-### 1. Buat project Supabase
+> App ini terhubung langsung ke **Supabase Cloud** — **tidak butuh Docker / Supabase lokal**. Cukup project cloud + `.env.local`.
+
+### 1. Buat project Supabase (cloud)
 Buat project gratis di [supabase.com/dashboard](https://supabase.com/dashboard).
 
 ### 2. Jalankan skema database
